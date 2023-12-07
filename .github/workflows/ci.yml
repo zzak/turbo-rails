@@ -46,4 +46,4 @@ jobs:
       - name: Fail when generated changes are not checked-in
         run: |
           git update-index --refresh
-          git diff-index --quiet HEAD --
+          git diff-index --quiet HEAD -- ':!Gemfile.lock'

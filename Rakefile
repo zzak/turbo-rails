@@ -8,21 +8,7 @@ load "rails/tasks/statistics.rake"
 
 Rake::TestTask.new do |test|
   test.libs << "test"
-  test.test_files = FileList["test/**/*_test.rb"]
+  test.pattern = "test/**/*_test.rb"
 end
 
-task :test_prereq do
-  puts "Installing Ruby dependencies"
-  `bundle install`
-
-  puts "Installing JavaScript dependencies"
-  `yarn install`
-
-  puts "Building JavaScript"
-  `yarn build`
-
-  puts "Preparing test database"
-  `cd test/dummy; ./bin/rails db:test:prepare; cd ../..`
-end
-
-task default: [:test_prereq, :test]
+task default: :test
